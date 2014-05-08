@@ -23,20 +23,22 @@
 	{
 		CCDirectorIOS *director = (CCDirectorIOS *)[CCDirector sharedDirector];
 		[director setDisplayStats:YES];
+		[director setAnimationInterval:1.0/60.0];
+		[director setFixedUpdateInterval:1.0/60.0];
 		
 		[director stopAnimation];
 		[director pause];
 		
-		CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(10, 10, 300, 300)];
+		CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(10, 80, 300, 300)];
 		[director setView:glView];
-		[glView setBackgroundColor:[UIColor blackColor]];
+		[glView setBackgroundColor:[UIColor blueColor]];
 		
-        	[director setProjection:director.projection];
-        
+		[director setProjection:director.projection];
+
 		[director resume];
-        	[director startAnimation];
+		[director startAnimation];
 		
-		CCScene *scene = [[CCScene alloc] init];
+		CCScene *scene = [CCScene node];
 		CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.7f green:0.2f blue:0.2f alpha:1.0f]];
 		[scene addChild:background];
 		

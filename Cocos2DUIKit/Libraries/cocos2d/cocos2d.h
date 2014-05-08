@@ -41,7 +41,7 @@
 
 // 0x00 HI ME LO
 // 00   03 00 00
-#define COCOS2D_VERSION 0x00030000
+#define COCOS2D_VERSION 0x00030100
 
 //
 // all cocos2d include files
@@ -86,16 +86,14 @@
 #import "CCTiledMapLayer.h"
 #import "CCTiledMapObjectGroup.h"
 #import "CCTransition.h"
+//#import "CCEffectNode.h" work in progress
 
 // Layouts
 #import "CCLayout.h"
 #import "CCLayoutBox.h"
 
 // Shaders
-#import "CCGLProgram.h"
-#import "ccGLStateCache.h"
-#import "ccShaders.h"
-#import "CCShaderCache.h"
+#import "CCShader.h"
 
 // Physics
 #import "CCPhysicsBody.h"
@@ -144,21 +142,13 @@
 //
 // cocos2d helper files
 //
-#import "Support/OpenGL_Internal.h"
 #import "Support/CCFileUtils.h"
 #import "Support/CGPointExtension.h"
 #import "Support/ccUtils.h"
-#import "Support/TransformUtils.h"
 #import "Support/CCProfiling.h"
 #import "Support/NSThread+performBlock.h"
 #import "Support/uthash.h"
 #import "Support/utlist.h"
-
-//
-// external
-//
-#import "kazmath/kazmath.h"
-#import "kazmath/GL/matrix.h"
 
 
 
