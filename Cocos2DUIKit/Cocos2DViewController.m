@@ -10,6 +10,17 @@
 
 #import "cocos2d.h"
 
+@interface CCDirector (CCRenderer)
+@property (nonatomic,strong) CCRenderer *renderer;
+@end
+
+@implementation CCDirector (CCRenderer) 
+// implementation may or may not be automated, so i'll implement it just in case
+- (void) setRenderer:(CCRenderer *)renderer {  _renderer = renderer;}
+- (CCRenderer *) renderer { return _renderer; }
+@end
+
+
 @interface Cocos2DViewController ()
 
 @end
@@ -30,6 +41,19 @@
 		[director pause];
 		
 		CCGLView *glView = [CCGLView viewWithFrame:CGRectMake(10, 80, 300, 300)];
+		{
+			// deallocate previous renderer
+			[director setRenderer:nil];
+			
+			// set current context
+			[EAGLContext setCurrentContext:glView.context];
+			
+			// purge shader cache
+			[CCShader initialize];
+			
+			// create and set a new renderer
+			[director setRenderer:[[CCRenderer alloc] init]];
+      		}
 		[director setView:glView];
 		[glView setBackgroundColor:[UIColor blueColor]];
 		
